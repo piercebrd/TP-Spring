@@ -4,11 +4,11 @@ import org.springframework.context.annotation.Profile;
 import org.springframework.stereotype.Service;
 
 @Service
-@Profile("sms")
-public class SmsService implements MessageService {
+@Profile("dev")
+public class DevMessageService implements MessageService {
 
     @Override
     public String getMessage() {
-        return "Message from SMS service";
+        return "Vous êtes sur le profil dev";
     }
 }

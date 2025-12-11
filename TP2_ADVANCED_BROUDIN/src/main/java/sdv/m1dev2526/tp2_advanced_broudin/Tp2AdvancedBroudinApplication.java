@@ -22,7 +22,7 @@ public class Tp2AdvancedBroudinApplication {
         SpringApplication.run(Tp2AdvancedBroudinApplication.class, args);
     }
 
-    @GetMapping("notif")
+    @GetMapping("bean")
     public String notif() {
         return notificationService.sendMessage();
     }
