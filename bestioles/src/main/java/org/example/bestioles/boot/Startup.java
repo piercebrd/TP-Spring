@@ -28,37 +28,10 @@ public class Startup implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        List<String> colors = List.of("Noir", "Blanc");
-        List<Animal> animauxNoirOuBlanc = animalRepository.findByColorIn(colors);
-        System.out.println("Animaux noirs ou blancs : " + animauxNoirOuBlanc.size());
+        personRepository.deletePersonWithoutAnimal();
+        List<Person> people = personRepository.findAll();
+        people.forEach(System.out::println);
 
-        List<Person> vieux = personRepository.findByAgeGreaterThanEqual(50);
-        vieux.forEach(p -> System.out.println(p.getFirstname() + " a " + p.getAge() + " ans."));
-
-        List<Species> species = speciesRepository.findAllOrderedByCommonName();
-        species.forEach(species1 -> System.out.println(species1));
-
-        List<Species> species2 = speciesRepository.findByCommonNameLike("Chat");
-        species2.forEach(s -> System.out.println(s));
-
-        Animal sampleAnimal = animalRepository.findById(1).orElse(null);
-        List<Person> owners = personRepository.findOwnersOf(sampleAnimal);
-        owners.forEach(p -> System.out.println(p));
-
-        Animal notOwnedAnimal = new Animal();
-        notOwnedAnimal.setColor("Gris");
-        notOwnedAnimal.setName("Pierce");
-        notOwnedAnimal.setSex("M");
-        notOwnedAnimal.setSpecies(speciesRepository.findById(1).get());
-        animalRepository.save(notOwnedAnimal);
-
-        boolean owned = animalRepository.isOwned(notOwnedAnimal);
-
-        if (owned) {
-            System.out.println(notOwnedAnimal.getName() + " a au moins un maître");
-        } else {
-            System.out.println(notOwnedAnimal.getName() + " n'a pas de maître");
-        }
-
+        personRepository.createRandomPersons(5);
     }
 }

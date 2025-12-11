@@ -8,7 +8,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface PersonRepository extends JpaRepository<Person, Integer> {
+public interface PersonRepository extends JpaRepository<Person, Integer>, PersonRepositoryCustom {
 
     List<Person> findByLastnameOrFirstname(String lastname, String firstname);
 

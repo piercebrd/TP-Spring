@@ -7,7 +7,7 @@ import org.springframework.data.repository.query.Param;
 
 import java.util.List;
 
-public interface SpeciesRepository extends JpaRepository<Species, Integer> {
+public interface SpeciesRepository extends JpaRepository<Species, Integer>, SpeciesRepositoryCustom {
 
     Species findFirstByCommonName(String commonName);
 

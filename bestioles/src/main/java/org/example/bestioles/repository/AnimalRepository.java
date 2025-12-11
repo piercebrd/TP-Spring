@@ -9,7 +9,7 @@ import org.springframework.data.repository.query.Param;
 import java.awt.*;
 import java.util.List;
 
-public interface AnimalRepository extends JpaRepository<Animal, Integer> {
+public interface AnimalRepository extends JpaRepository<Animal, Integer>, AnimalRepositoryCustom {
 
     List<Animal> findBySpecies(Species species);
 
