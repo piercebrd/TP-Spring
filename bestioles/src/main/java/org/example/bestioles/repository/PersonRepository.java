@@ -3,8 +3,10 @@ package org.example.bestioles.repository;
 import org.example.bestioles.entity.Animal;
 import org.example.bestioles.entity.Person;
 import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.data.jpa.repository.Modifying;
 import org.springframework.data.jpa.repository.Query;
 import org.springframework.data.repository.query.Param;
+import org.springframework.transaction.annotation.Transactional;
 
 import java.util.List;
 
@@ -19,5 +21,9 @@ public interface PersonRepository extends JpaRepository<Person, Integer>, Person
 
     @Query("SELECT p FROM Person p WHERE :animal MEMBER OF p.animals")
     List<Person> findOwnersOf(@Param("animal") Animal animal);
+
+    @Modifying
+    @Transactional
+    void deleteByFirstname(String firstname);
 
 }

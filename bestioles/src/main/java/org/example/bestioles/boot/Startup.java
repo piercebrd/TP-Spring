@@ -33,5 +33,7 @@ public class Startup implements CommandLineRunner {
         people.forEach(System.out::println);
 
         personRepository.createRandomPersons(5);
+
+        personRepository.deleteByFirstname("Sylvie");
     }
 }
