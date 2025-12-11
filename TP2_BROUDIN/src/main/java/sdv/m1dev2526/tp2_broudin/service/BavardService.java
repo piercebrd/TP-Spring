@@ -7,7 +7,7 @@ import org.springframework.stereotype.Service;
 @Service
 public class BavardService {
 
-    private String nom = "Nom";
+    private String nom = "Nom ";
 
     public String getNom() {
         return nom;
@@ -18,7 +18,7 @@ public class BavardService {
     }
 
     public String parler() {
-        return nom + " :" + this.getClass().getSimpleName();
+        return nom + ":" + this.getClass().getSimpleName();
 
     }
 
