@@ -1,15 +1,12 @@
 package org.example.bestioles.entity;
 
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+
 import java.util.Set;
 
 @Entity
-@Getter
-@Setter
-@NoArgsConstructor
+@Data
 @Table(name = "person")
 public class Person {
 
@@ -34,9 +31,11 @@ public class Person {
 
     @ManyToMany
     @JoinTable(name = "person_animals", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "animals_id"))
+    @ToString.Exclude
     private Set<Animal> animals;
 
     @ManyToMany
     @JoinTable(name = "person_role", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
+    @ToString.Exclude
     private Set<Role> roles;
 }
