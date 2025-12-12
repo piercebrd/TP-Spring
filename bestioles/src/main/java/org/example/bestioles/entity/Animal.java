@@ -1,5 +1,6 @@
 package org.example.bestioles.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -31,6 +32,7 @@ public class Animal {
     @ManyToOne
     @JoinColumn(name = "species_id")
     @ToString.Exclude
+    @JsonIgnore
     private Species species;
 
     @ManyToMany(mappedBy = "animals")

@@ -1,5 +1,6 @@
 package org.example.bestioles.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.*;
 
@@ -32,10 +33,12 @@ public class Person {
     @ManyToMany
     @JoinTable(name = "person_animals", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "animals_id"))
     @ToString.Exclude
+    @JsonIgnore
     private Set<Animal> animals;
 
     @ManyToMany
     @JoinTable(name = "person_role", joinColumns = @JoinColumn(name = "person_id"), inverseJoinColumns = @JoinColumn(name = "role_id"))
     @ToString.Exclude
+    @JsonIgnore
     private Set<Role> roles;
 }

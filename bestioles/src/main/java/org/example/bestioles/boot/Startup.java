@@ -28,12 +28,7 @@ public class Startup implements CommandLineRunner {
 
     @Override
     public void run(String... args) throws Exception {
-        personRepository.deletePersonWithoutAnimal();
-        List<Person> people = personRepository.findAll();
-        people.forEach(System.out::println);
-
-        personRepository.createRandomPersons(5);
-
-        personRepository.deleteByFirstname("Sylvie");
+        List<Person> persons = personRepository.findAll();
+        persons.forEach(System.out::println);
     }
 }
